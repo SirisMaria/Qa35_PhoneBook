@@ -30,15 +30,14 @@ public class HelperUser extends HelperBase {
     }
 
     public void openLoginRegistrationForm() {
+       // WebElement loginTab = wd.findElement(By.xpath("//a[@href='/login']"));
         WebElement loginTab = wd.findElement(By.xpath("//a[@href='/login']"));
         loginTab.click();
     }
 
-    public void fillLoginRegistrationForm(User user) {
-
-        type(By.xpath("//input[@placeholder='Email']"), user.getEmail());
-        type(By.xpath("//input[@placeholder='Password']"), user.getPassword());
-
+    public void fillLoginRegistrationForm(String email,String password){
+        type(By.xpath("//input[@placeholder='Email']"),email);
+        type(By.xpath("//input[@placeholder='Password']"),password);
 //
 //        WebElement inputEmail = wd.findElement(By.xpath("//input[@placeholder='Email']"));
 //        inputEmail.click();
@@ -51,7 +50,10 @@ public class HelperUser extends HelperBase {
 //        inputPassword.sendKeys(password);
 
     }
-
+    public void fillLoginRegistrationForm(User user) {
+        type(By.xpath("//input[@placeholder='Email']"), user.getEmail());
+        type(By.xpath("//input[@placeholder='Password']"), user.getPassword());
+    }
     public void submitLogin() {
         WebElement loginButton = wd.findElement(By.xpath("//*[text()=' Login']"));
         loginButton.click();
